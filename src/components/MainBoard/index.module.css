@@ -1,0 +1,82 @@
+.MainBoard {
+
+}
+
+.logo {
+    margin-right: 14px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: url(http://gw.alipayobjects.com/zos/rmsportal/ZLdipPynpsirzAfeulEf.png) no-repeat 0 0;
+    background-size: auto 40px;
+}
+
+.MainBoardWrap {
+    background: #ededef;
+}
+
+.MenuBoard {
+    background: #fff;
+    z-index: 2;
+}
+
+.PageTitle {
+    display: flex;
+    color: #1890ff;
+    margin: 0;
+    padding: 0 20px;
+    width: 265px;
+    height: 40px;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 16px;
+    font-weight: 400;
+    white-space: nowrap;
+    background: #f9f9f9;
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none; 
+}
+
+.pagename {
+    display: flex;
+}
+
+.pagetext {
+    margin-left: 10px;
+}
+
+.extraDrawer {
+    position: fixed;
+    z-index: 1;
+    top: 80px;
+    bottom: 0;
+    left: 0;
+    margin-top: -2px;
+    width: 400px!important;
+}
+
+.MenuBoard {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    z-index: 2;
+    box-shadow: 0px 0px 11px rgba(162, 159, 162, 0.36)
+}
+
+.MenuBoard .ant-drawer-header {
+    margin-top: 8px;
+}
+
+.addPageBtn {
+    position: absolute;
+    bottom: 125px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(222, 222, 222, 0.788235294117647);
+    padding: 7px 0px 7px 0px;
+    cursor: pointer;
+}

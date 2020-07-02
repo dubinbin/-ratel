@@ -12,12 +12,14 @@
 
 }
 
-.RightModuleBoard .flag {
-    height: 15px;
-    width: 1px;
-    background: #d7d7d7;
-    position: absolute;
-    top: 12px;
+.RightModuleBoard  {
+    .flag {
+        height: 15px;
+        width: 1px;
+        background: #d7d7d7;
+        position: absolute;
+        top: 12px;
+    }
 }
 
 .extraDrawer {

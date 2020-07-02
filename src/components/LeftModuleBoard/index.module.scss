@@ -1,0 +1,19 @@
+.extraDrawer {
+    position: fixed;
+    z-index: 1;
+    top: 80px;
+    bottom: 0;
+    left: 0;
+    margin-top: -2px;
+    width: 400px!important;
+}
+
+.LeftSideMenu {
+    position: absolute;
+    left: 0;
+}
+
+.mainContentArea {
+    margin-left: 75px;
+    padding: 0px 10px 0px 10px;
+}

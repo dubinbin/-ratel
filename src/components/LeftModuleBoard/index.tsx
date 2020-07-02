@@ -1,40 +1,53 @@
-import React from 'react'
-import { Row, Col } from 'antd';
+import React, { useState, useImperativeHandle, forwardRef, useRef } from 'react'
+import { Drawer } from 'antd';
+import style from './index.module.scss'
+import { LeftSideMenu } from './LeftSideMenu';
+import { ShowComponentsPaenel } from 'components/ShowComponentsPanel';
+import { IMenuListType, MenuList } from 'components/ComponentsConfig';
 
-const style = { background: '#0092ff', padding: '8px 0' };
+export const LeftModuleBoard: React.FC<any> = forwardRef(({...props}, ref) => {
+    const DrawerRef = useRef<HTMLDivElement>(null)
+    const [visible, setVisible] = useState<boolean>(false)
+    const [selectItem, setSelectItem] = useState<IMenuListType>(MenuList[0])
 
-export default class LeftModuleBoard extends React.Component {
+    useImperativeHandle(ref, () => ({
+        openDrawer: () => {
+            setVisible(true)
+        }
+    }))
 
-    render() {
-        return (
-            <div>
-               <Row gutter={[16, 24]}>
-                    <Col className="gutter-row" span={6}>
-                        <div style={style}>col-6</div>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <div style={style}>col-6</div>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <div style={style}>col-6</div>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <div style={style}>col-6</div>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <div style={style}>col-6</div>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <div style={style}>col-6</div>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <div style={style}>col-6</div>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <div style={style}>col-6</div>
-                    </Col>
-                </Row>
-            </div>
-        )
+    const onClose = () => {
+        setVisible(false)
+    };
+
+    const selectItemMethod = (item: IMenuListType) => {
+        setSelectItem(item)
     }
-}
+
+    return (
+        <div ref={DrawerRef}>
+            <Drawer
+                title="页面列表"
+                placement={'left'}
+                className={style.extraDrawer}
+                closable={true}
+                drawerStyle={{paddingTop: 12}}
+                mask={false}
+                onClose={() => onClose()}
+                visible={visible}
+                key={'left'}
+                >
+
+                <div className={style.LeftSideMenu}>
+                    <LeftSideMenu seleteItem={(item) => selectItemMethod(item)}/>
+                </div>
+
+                <div className={style.mainContentArea}>
+                    <ShowComponentsPaenel data={selectItem}/>
+                </div>
+            
+            </Drawer>
+        </div>
+
+    ) 
+})

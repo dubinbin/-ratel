@@ -1,47 +1,35 @@
-import React, { ChangeEvent } from 'react'
+import React, { FC, useState } from 'react'
 import { Drawer, Button, Space } from 'antd';
-import style from './index.module.css'
+import style from './index.module.scss'
 
-export default class RightModuleBoard extends React.Component {
-  state = { visible: false, placement: 'left' };
+export const RightModuleBoard: FC = () => {
+  const [visible, setVisible] = useState<boolean>(false)
 
-  showDrawer = () => {
-    this.setState({
-      visible: true,
-    });
+  const showDrawer = () => {
+    setVisible(true)
   };
 
-  onClose = () => {
-    this.setState({
-      visible: false,
-    });
+  const onClose = () => {
+    setVisible(false)
   };
 
-  onChange = (e: React.ChangeEvent<any>) => {
-    this.setState({
-      placement: e.target.value,
-    });
-  };
-
-  render() {
-    const { placement, visible } = this.state;
-    return (
+  
+  return (
       <>
       <br/>
       <br/>
       <br/>
       <br/>
         <Space>
-          <Button type="primary" onClick={this.showDrawer}>
+          <Button type="primary" onClick={() => showDrawer()}>
             Open
           </Button>
         </Space>
         <Drawer
           title="编辑器"
           placement={'right'}
-          onClose={this.onClose}
+          onClose={() => onClose()}
           visible={visible}
-          key={placement}
           className={style.extraDrawer}
           closable={true}
           drawerStyle={{paddingTop: 12}}
@@ -53,5 +41,4 @@ export default class RightModuleBoard extends React.Component {
         </Drawer>
       </>
     );
-  }
 }

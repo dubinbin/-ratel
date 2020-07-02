@@ -1,7 +1,7 @@
-import React from 'react'
-import style from './index.module.css'
+import React, { FC } from 'react'
+import style from './index.module.scss'
 
-export function MiddleModule() {
+export const MiddleModule: FC<any> = () => {
     return (
         <div className={style.MiddleModule}>
             <div className={style.MiddleModuleWrapper}>

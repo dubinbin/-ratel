@@ -1,18 +1,56 @@
 import React from 'react'
 import { Collapse } from 'antd'
-import style from './index.module.scss'
 
-const { Panel } = Collapse;
+const { Panel } = Collapse
 
 export const CollapseComp: React.FC = () => {
+
     return (
-        <div className={style.CollapseComp}>
-            <div className={style.CollapseCompMask}></div>
-                <Collapse defaultActiveKey={['1']}>
-                    <Panel header="This is panel header 1" key="1">
-                        <p>123123</p>
-                    </Panel>
-                </Collapse>
-        </div>
+        <Collapse defaultActiveKey={['1']}>
+            <Panel header="sdsfdsfsd" key="1">
+                <p>123123</p>
+            </Panel>
+        </Collapse>
     )
+}
+
+CollapseComp.defaultProps = {
+    activeKey: null,
+    defaultActiveKey: null,
+    bordered: true,
+    accordion: false,
+    onChange:  undefined,
+    expandIcon: null,
+    expandIconPosition: null,
+    destroyInactivePanel: false,
+    ghost: false,
+    Panel: {
+        disabled: false,	
+        forceRender	: false,
+        header:	null,	
+        key:	null,	
+        showArrow:  true,
+        extra: null
+    }
+};
+
+
+(Collapse as any).sechma = {
+    activeKey: '',
+    defaultActiveKey: null,
+    bordered: true,
+    accordion: false,
+    onChange:  undefined,
+    expandIcon: null,
+    expandIconPosition: null,
+    destroyInactivePanel: false,
+    ghost: false,
+    Panel: {
+        disabled: false,	
+        forceRender	: false,
+        header:	null,	
+        key:	null,	
+        showArrow:  true,
+        extra: null
+    }
 }

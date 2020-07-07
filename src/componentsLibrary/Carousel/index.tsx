@@ -1,13 +1,14 @@
 import React from 'react'
 import { Carousel } from 'antd'
+import { inject, observer } from 'mobx-react';
 
-export function CarouselComp(props: {
+export const CarouselComp = inject('EditorStores')(observer((props: {
         autoplay: boolean,
-        dotPosition: any,
-        carousels: any[],
-    }
-) {
-    const {autoplay, dotPosition, carousels} = props;
+        dotPosition: "bottom" | "top" | "left" | "right" | undefined,
+        carousels: {url: string, link: string}[]
+    })  => {
+  
+    const { autoplay, dotPosition, carousels } = props;
 
     return (
         <Carousel autoplay={autoplay} dotPosition={dotPosition}>
@@ -23,9 +24,9 @@ export function CarouselComp(props: {
             })}
         </Carousel>
     )
-}
+}));
 
-CarouselComp.defaultProps = {
+(CarouselComp as any).defaultProps = {
     autoplay: false,
     dotPosition: 'bottom',
     carousels: [

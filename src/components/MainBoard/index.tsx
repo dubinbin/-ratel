@@ -8,9 +8,14 @@ import { observer, inject } from 'mobx-react'
 import style from './index.module.scss'
 import { EditorStore } from 'store/modules/Editor.mobx'
 
+export type IRefType = {
+    openDrawer: () => void | undefined
+} 
+
+
 export const MainBoard = inject('EditorStores')(observer((props: {EditorStores: EditorStore}) =>{
-    const DrawerRefLeft = useRef<any>()
-    const DrawerRefRight = useRef<any>()
+    const DrawerRefLeft = useRef<IRefType>(null)
+    const DrawerRefRight = useRef<IRefType>(null)
 
     const showDrawer = useCallback(() => { // 关闭左边抽屉
        if (DrawerRefLeft.current) {

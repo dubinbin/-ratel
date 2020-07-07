@@ -32,7 +32,6 @@ export const EditPanel = inject('EditorStores')(observer((props: {visible: boole
 
   const { onCloseFn, visible, EditorStores } = props
 
-  // console.log(EditorStores.currentComponent.defaultProps)
   return (
     <Drawer
         title="编辑器"

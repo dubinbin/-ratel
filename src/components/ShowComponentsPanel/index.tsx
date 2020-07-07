@@ -19,8 +19,14 @@ export const ShowComponentsPaenel = inject('EditorStores')(observer((props: {Edi
     const { data, EditorStores } = props
 
     const addToComponent = useCallback((comp) => {
-        EditorStores.addComponent(comp)
-    }, [])
+        EditorStores.addComponent({
+            component: comp,
+            name: comp.originName,
+            schema: comp.schema,
+            props: comp.defaultProps,
+            defaultProps: comp.defaultProps,
+        })
+    }, [EditorStores])
 
     const renderDifferentComponent = useCallback(() => {
         const getComponents = pluginsInit.components.getObjFromGroup(data)

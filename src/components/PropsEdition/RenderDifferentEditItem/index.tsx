@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { RadioSchema } from '../components/Radio/Radio.schema'
+import { SwitchSchema } from '../components/Switch/Switch.schema';
 
-export const RenderDifferentEditItem = () => {
-    return (
-        <div>RenderDifferentEditItem</div>
-    )
+export const RenderDifferentEditItem = (key: string, propsValue: any, schema: {type: string, [key: string]: {}}, onChange: (key: string, v: any) => void) => {
+
+    const renderDiffComp = useCallback(() => {
+        switch(schema.type) {
+            case 'radio':
+                return <RadioSchema key={key}
+                        schema={schema}
+                        value={propsValue}
+                        onChange={(v) => onChange(key, v)}
+                        {...{ bindKey: key }}/>
+            case 'switch':
+                return <SwitchSchema/>
+            default:
+                return null
+        }
+    }, [propsValue])
+
+    return renderDiffComp()
 }

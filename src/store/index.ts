@@ -6,7 +6,7 @@ export class Store {
        this.componentsQueue = new Map()
     }
 
-    public addComponentToGroup(group_name: string, groupComponents: any): void { // 组件加入组件群
+    public addComponentToGroup(group_name: string, groupComponents: string[]): void { // 组件加入组件群
         if (!this.componentsGroup.has(group_name)) {
             this.componentsGroup.set(group_name, [])
         }

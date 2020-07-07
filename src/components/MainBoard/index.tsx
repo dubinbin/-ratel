@@ -1,75 +1,56 @@
-import React, { useRef, useCallback, FC } from 'react'
+import React, { useRef, useCallback } from 'react'
+import { Row } from 'antd'
+import { EditorPanel } from '../EditorPanel'
+import { RightModuleBoard } from '../RightModuleBoard'
+import { LeftModuleBoard } from '../LeftModuleBoard'
+import { PanelHeader } from 'components/PanelHeader'
+import { observer, inject } from 'mobx-react'
 import style from './index.module.scss'
-import { SaveOutlined, EyeOutlined, SendOutlined, UnorderedListOutlined } from '@ant-design/icons'
-import { Row, Col, PageHeader, Button } from 'antd'
-import { MiddleModule } from '../MiddleModule';
-import { RightModuleBoard } from '../RightModuleBoard';
-import { LeftModuleBoard } from '../LeftModuleBoard';
+import { EditorStore } from 'store/modules/Editor.mobx'
+
+export type IRefType = {
+    openDrawer: () => void | undefined
+} 
 
 
-export const Logo:FC = () => {
-    return (
-        <div className={style.logo}></div>
-    )
-}
+export const MainBoard = inject('EditorStores')(observer((props: {EditorStores: EditorStore}) =>{
+    const DrawerRefLeft = useRef<IRefType>(null)
+    const DrawerRefRight = useRef<IRefType>(null)
 
-export const PageTitle: React.FC<any> = (props: {clickDrawer: () => void}) => {
-    return (
-        <div className={style.PageTitle}>
-            <div className={style.pagename} onClick={() => props.clickDrawer()}>
-                <div><UnorderedListOutlined /></div>
-                <div className={style.pagetext}>页面：优惠券-首页</div>
-            </div>
-        </div>
-    )
-}
-
-
-export const MainBoard: FC<any> = () => {
-    const DrawerRef = useRef<any>();
-
-    const showDrawer = useCallback(() => {
-       if (DrawerRef.current) {
-            DrawerRef.current.openDrawer()
+    const showDrawer = useCallback(() => { // 关闭左边抽屉
+       if (DrawerRefLeft.current) {
+            DrawerRefLeft.current.openDrawer()
        }  
     }, [])
-    
+
+    const showRightBoard = useCallback(() => {
+        if (DrawerRefRight.current) {
+            DrawerRefRight.current.openDrawer()
+       }
+    }, [])
+
     return (
         <div className={style.MainBoard}>
 
             <div className={style.MenuBoard}>
-                <PageHeader
-                    ghost={false}
-                    title={<Logo/>}
-                    subTitle={<PageTitle clickDrawer={() => showDrawer()}/>}
-                    extra={[
-                        <Button key="1" icon={<SaveOutlined />}>保存</Button>,
-                        <Button key="2" icon={<EyeOutlined />}>预览</Button>,
-                        <Button key="3" type="primary" icon={<SendOutlined />}>
-                            发布
-                        </Button>,
-                    ]}
-                    >
-                </PageHeader>
+                <PanelHeader showDrawer={() => showDrawer()}/>
             </div>
 
             <div className={style.MainBoardWrap}>
                 <Row>
-                    <Col span={4}>
-                        <div className="LeftSideBoard">
-                            <LeftModuleBoard ref={DrawerRef}/>
-                        </div>
-                    </Col>
-                    <Col span={16}>
-                        <MiddleModule/>
-                    </Col>
-                    <Col span={4}>
-                        <div className="rightSideBoard">
-                            <RightModuleBoard/>
-                        </div>
-                    </Col>
+                    <div className={style.LeftSideBoard}>
+                        <LeftModuleBoard ref={DrawerRefLeft}/>
+                    </div>
+
+                    <div className={style.EditorPanel}>
+                        <EditorPanel {...props} openRightBoard={() => showRightBoard()}/>
+                    </div>
+
+                    <div className={style.rightSideBoard}>
+                        <RightModuleBoard ref={DrawerRefRight}/>
+                    </div>
                 </Row>
             </div>
         </div>
     )
-}
+}))

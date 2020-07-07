@@ -1,14 +1,15 @@
 import React, { useState, useImperativeHandle, forwardRef, useRef } from 'react'
-import { Drawer } from 'antd';
+import { Drawer } from 'antd'
 import style from './index.module.scss'
-import { LeftSideMenu } from './LeftSideMenu';
-import { ShowComponentsPaenel } from 'components/ShowComponentsPanel';
-import { IMenuListType, MenuList } from 'components/ComponentsConfig';
+import { LeftSideMenu } from './LeftSideMenu'
+import { ShowComponentsPaenel } from 'components/ShowComponentsPanel'
+import { pluginsInit } from 'plugins/initStore'
 
-export const LeftModuleBoard: React.FC<any> = forwardRef(({...props}, ref) => {
+export const LeftModuleBoard: React.FC<any> = forwardRef((props: {addComponent: () => void}, ref) => {
+    const default_Components = pluginsInit.components.getAllGroups()[0]
     const DrawerRef = useRef<HTMLDivElement>(null)
-    const [visible, setVisible] = useState<boolean>(false)
-    const [selectItem, setSelectItem] = useState<IMenuListType>(MenuList[0])
+    const [visible, setVisible] = useState<boolean>(true)
+    const [selectItem, setSelectItem] = useState<string>(default_Components)
 
     useImperativeHandle(ref, () => ({
         openDrawer: () => {
@@ -18,9 +19,9 @@ export const LeftModuleBoard: React.FC<any> = forwardRef(({...props}, ref) => {
 
     const onClose = () => {
         setVisible(false)
-    };
+    }
 
-    const selectItemMethod = (item: IMenuListType) => {
+    const selectItemMethod = (item: string) => {
         setSelectItem(item)
     }
 
@@ -43,7 +44,7 @@ export const LeftModuleBoard: React.FC<any> = forwardRef(({...props}, ref) => {
                 </div>
 
                 <div className={style.mainContentArea}>
-                    <ShowComponentsPaenel data={selectItem}/>
+                    <ShowComponentsPaenel data={selectItem} {...props as any}/>
                 </div>
             
             </Drawer>

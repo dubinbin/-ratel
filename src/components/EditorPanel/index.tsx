@@ -1,15 +1,16 @@
 import React, { useCallback, Component, ComponentClass } from 'react'
 import style from './index.module.scss'
-import { inject, observer } from 'mobx-react'
-import { EditorStore } from '../../store/modules/Editor.mobx'
+import { observer } from 'mobx-react'
+import { useStore } from 'store/store'
 
-export const EditorPanel = inject('EditorStores')(observer((props: {EditorStores: EditorStore, openRightBoard: () => void}) =>{
+export const EditorPanel = observer((props: {openRightBoard: () => void}) =>{
 
-    const { EditorStores, openRightBoard } = props;
+    const { editComponent, componentQueue } = useStore()
+    const { openRightBoard } = props;
 
     const clickComp = useCallback((Comp) => {
         openRightBoard()
-        EditorStores.editComponent(Comp)
+        editComponent(Comp)
     } , [])
 
     return (
@@ -17,7 +18,7 @@ export const EditorPanel = inject('EditorStores')(observer((props: {EditorStores
             <div className={style.MiddleModuleWrapper}>
 
                 <div className={style.componentWrap}>
-                        {EditorStores.componentQueue.map((Comp: {name: string, component: ComponentClass, props: {[key: string]: any}}, index: number) => {
+                        {componentQueue.map((Comp: {name: string, component: ComponentClass, props: {[key: string]: any}}, index: number) => {
                             const Component = Comp.component
                             return (
                                 <div className={style.componentWrapInner} onClick={() => clickComp(Comp)} key={Comp.name}>
@@ -30,4 +31,4 @@ export const EditorPanel = inject('EditorStores')(observer((props: {EditorStores
             </div>
         </div>
     )
-}))
+})

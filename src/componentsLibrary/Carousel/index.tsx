@@ -1,8 +1,8 @@
 import React from 'react'
 import { Carousel } from 'antd'
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 
-export const CarouselComp = inject('EditorStores')(observer((props: {
+export const CarouselComp = observer((props: {
         autoplay: boolean,
         dotPosition: "bottom" | "top" | "left" | "right" | undefined,
         carousels: {url: string, link: string}[]
@@ -24,7 +24,7 @@ export const CarouselComp = inject('EditorStores')(observer((props: {
             })}
         </Carousel>
     )
-}));
+});
 
 (CarouselComp as any).defaultProps = {
     autoplay: false,

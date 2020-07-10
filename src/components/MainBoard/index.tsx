@@ -4,16 +4,16 @@ import { EditorPanel } from '../EditorPanel'
 import { RightModuleBoard } from '../RightModuleBoard'
 import { LeftModuleBoard } from '../LeftModuleBoard'
 import { PanelHeader } from 'components/PanelHeader'
-import { observer, inject } from 'mobx-react'
+import { observer } from 'mobx-react'
 import style from './index.module.scss'
-import { EditorStore } from 'store/modules/Editor.mobx'
 
 export type IRefType = {
     openDrawer: () => void | undefined
 } 
 
 
-export const MainBoard = inject('EditorStores')(observer((props: {EditorStores: EditorStore}) =>{
+export const MainBoard = observer(() =>{
+
     const DrawerRefLeft = useRef<IRefType>(null)
     const DrawerRefRight = useRef<IRefType>(null)
 
@@ -43,7 +43,7 @@ export const MainBoard = inject('EditorStores')(observer((props: {EditorStores: 
                     </div>
 
                     <div className={style.EditorPanel}>
-                        <EditorPanel {...props} openRightBoard={() => showRightBoard()}/>
+                        <EditorPanel openRightBoard={() => showRightBoard()}/>
                     </div>
 
                     <div className={style.rightSideBoard}>
@@ -53,4 +53,4 @@ export const MainBoard = inject('EditorStores')(observer((props: {EditorStores: 
             </div>
         </div>
     )
-}))
+})

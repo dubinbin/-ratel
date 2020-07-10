@@ -1,9 +1,10 @@
 import React, { useState, forwardRef, useImperativeHandle, useRef } from 'react'
 import { Drawer } from 'antd';
 import style from './index.module.scss'
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 import { EditorStore } from 'store/modules/Editor.mobx';
 import { PropsEdition } from 'components/PropsEdition';
+import { useStore } from 'store/store';
 
 export const RightModuleBoard: React.FC<any> = forwardRef(({...props}, ref) => {
   const [visible, setVisible] = useState<boolean>(false)
@@ -28,9 +29,10 @@ export const RightModuleBoard: React.FC<any> = forwardRef(({...props}, ref) => {
 })
 
 
-export const EditPanel = inject('EditorStores')(observer((props: {visible: boolean, onCloseFn: () => void, EditorStores: EditorStore}) => {
+export const EditPanel = observer((props: {visible: boolean, onCloseFn: () => void}) => {
 
-  const { onCloseFn, visible, EditorStores } = props
+  const { onCloseFn, visible } = props
+  const { currentComponent } = useStore()
 
   return (
     <Drawer
@@ -44,7 +46,7 @@ export const EditPanel = inject('EditorStores')(observer((props: {visible: boole
         drawerStyle={{paddingTop: 12}}
         mask={false}
         >
-        <PropsEdition component={EditorStores.currentComponent} {...props}/>
+        <PropsEdition component={currentComponent} {...props}/>
       </Drawer>
   )
-}))
+})

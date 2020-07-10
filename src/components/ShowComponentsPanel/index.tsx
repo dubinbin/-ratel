@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react'
 import { pluginsInit } from 'plugins/initStore';
 import style from './index.module.scss'
-import { observer, inject } from 'mobx-react';
-import { EditorStore } from 'store/modules/Editor.mobx'
+import { observer } from 'mobx-react';
+import { useStore } from 'store/store';
 
 export function ComponentWrap(props: {children: React.ReactNode}) {
     const { children } = props;
@@ -14,19 +14,20 @@ export function ComponentWrap(props: {children: React.ReactNode}) {
     )
 }
 
-export const ShowComponentsPaenel = inject('EditorStores')(observer((props: {EditorStores: EditorStore, data: string}) => {
+export const ShowComponentsPaenel = observer((props: {data: string}) => {
     
-    const { data, EditorStores } = props
+    const { data } = props
+    const { addComponent } = useStore()
 
     const addToComponent = useCallback((comp) => {
-        EditorStores.addComponent({
+        addComponent({
             component: comp,
             name: comp.originName,
             schema: comp.schema,
             props: comp.defaultProps,
             defaultProps: comp.defaultProps,
         })
-    }, [EditorStores])
+    }, [])
 
     const renderDifferentComponent = useCallback(() => {
         const getComponents = pluginsInit.components.getObjFromGroup(data)
@@ -50,4 +51,4 @@ export const ShowComponentsPaenel = inject('EditorStores')(observer((props: {Edi
     }, [data])
 
     return renderDifferentComponent()
-}))
+})

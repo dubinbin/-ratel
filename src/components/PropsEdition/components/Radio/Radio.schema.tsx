@@ -3,7 +3,7 @@ import { Radio } from 'antd'
 import { toJS } from 'mobx'
 
 export function RadioSchema(props: { schema: any, value: any, onChange: (e: Event) => void}) {
-    const { schema, value,  onChange } = props;
+    const { schema, value, onChange } = props;
     const SchemaToJS = toJS(schema)
     const { options } = SchemaToJS;
 

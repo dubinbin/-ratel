@@ -8,7 +8,7 @@ export const store = {
     EditorStores
 }
 
-const StoreContext = createContext(new EditorStore)
+const StoreContext = createContext(new EditorStore())
 
 
 export const Provider = ({children}: any) => {

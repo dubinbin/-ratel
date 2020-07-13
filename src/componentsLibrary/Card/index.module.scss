@@ -1,0 +1,11 @@
+.cardWrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+    width: 92%;
+    margin: 0 auto;
+    z-index: 4;
+    margin-top: 2px;
+    min-height: 250px;  
+}

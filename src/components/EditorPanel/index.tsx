@@ -1,4 +1,4 @@
-import React, { useCallback, Component, ComponentClass } from 'react'
+import React, { useCallback, ComponentClass } from 'react'
 import style from './index.module.scss'
 import { observer } from 'mobx-react'
 import { useStore } from 'store/store'

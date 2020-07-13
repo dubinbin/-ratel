@@ -2,7 +2,6 @@ import React, { useState, forwardRef, useImperativeHandle, useRef } from 'react'
 import { Drawer } from 'antd';
 import style from './index.module.scss'
 import { observer } from 'mobx-react';
-import { EditorStore } from 'store/modules/Editor.mobx';
 import { PropsEdition } from 'components/PropsEdition';
 import { useStore } from 'store/store';
 
@@ -46,7 +45,7 @@ export const EditPanel = observer((props: {visible: boolean, onCloseFn: () => vo
         drawerStyle={{paddingTop: 12}}
         mask={false}
         >
-        <PropsEdition component={currentComponent} {...props}/>
+        <PropsEdition component={currentComponent}/>
       </Drawer>
   )
 })

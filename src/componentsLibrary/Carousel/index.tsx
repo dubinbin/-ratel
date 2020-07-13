@@ -1,6 +1,6 @@
 import React from 'react'
 import { Carousel } from 'antd'
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react'
 
 export const CarouselComp = observer((props: {
         autoplay: boolean,

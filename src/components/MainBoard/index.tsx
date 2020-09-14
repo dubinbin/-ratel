@@ -35,21 +35,23 @@ export const MainBoard = observer(() =>{
             <div className={style.MenuBoard}>
                 <PanelHeader showDrawer={() => showDrawer()}/>
             </div>
-
+              
             <div className={style.MainBoardWrap}>
-                <Row>
-                    <div className={style.LeftSideBoard}>
-                        <LeftModuleBoard ref={DrawerRefLeft}/>
-                    </div>
+                    <Row>
+                        <div className={style.LeftSideBoard}>
+                            <LeftModuleBoard ref={DrawerRefLeft}/>
+                        </div>
 
-                    <div className={style.EditorPanel}>
-                        <EditorPanel openRightBoard={() => showRightBoard()}/>
-                    </div>
+    
+                        <div className={style.EditorPanel}>
+                            <EditorPanel openRightBoard={() => showRightBoard()}/>
+                        </div>
 
-                    <div className={style.rightSideBoard}>
-                        <RightModuleBoard ref={DrawerRefRight}/>
-                    </div>
-                </Row>
+
+                        <div className={style.rightSideBoard}>
+                            <RightModuleBoard ref={DrawerRefRight}/>
+                        </div>
+                    </Row>
             </div>
         </div>
     )

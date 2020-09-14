@@ -10,6 +10,13 @@ export class EditorStore {
     }
 
     @action
+    adjustProcedure = (startIndex: number, destinationIndex: number) => {
+         const temp = this.componentQueue[startIndex];
+         this.componentQueue.splice(startIndex, 1, this.componentQueue[destinationIndex])
+         this.componentQueue.splice(destinationIndex, 1, temp);
+    }
+
+    @action
     editComponent = (component: any) => {
         this.currentComponent = component
      }

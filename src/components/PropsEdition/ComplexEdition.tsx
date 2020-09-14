@@ -18,7 +18,7 @@ export const ComplexEdition = observer((props: { schema: any, propsValue: any} )
 
     return (
         <div>
-            {CardInfo.map((item: {[key: string]: any}, index: number) => {
+            {CardInfo && CardInfo.map((item: {[key: string]: any}, index: number) => {
                 return Object.keys(item).map(key => {
                     return (
                         <div key={key}>

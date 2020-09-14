@@ -3,6 +3,7 @@ import { pluginsInit } from 'plugins/initStore';
 import style from './index.module.scss'
 import { observer } from 'mobx-react';
 import { useStore } from 'store/store';
+import { DragDropContext, Droppable, Draggable, DraggableProvided, DroppableProvided } from 'react-beautiful-dnd'
 
 export function ComponentWrap(props: {children: React.ReactNode}) {
     const { children } = props;
@@ -34,15 +35,14 @@ export const ShowComponentsPaenel = observer((props: {data: string}) => {
         if (getComponents.length) {
             return (
                 <ul className={style.renderDifferentComponent}>
-                {
-                    getComponents.map((Component, index) => (
+                    {getComponents.map((Component, index) => (
                         <li key={index} onClick={() => addToComponent(Component)}>
                             <ComponentWrap>
                                 <Component/>
                             </ComponentWrap>
                         </li>
-                    ))
-                }
+
+                    ))}
                 </ul>
             )
         } else {

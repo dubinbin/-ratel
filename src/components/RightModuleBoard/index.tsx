@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useImperativeHandle, useRef } from 'react'
+import React, { useState, forwardRef, useImperativeHandle, useRef, useCallback } from 'react'
 import { Drawer } from 'antd';
 import style from './index.module.scss'
 import { observer } from 'mobx-react';
@@ -15,15 +15,15 @@ export const RightModuleBoard: React.FC<any> = forwardRef(({...props}, ref) => {
       }
   }))
 
-  const onClose = () => {
+  const onClose = useCallback(() => {
       setVisible(false)
-  };
+  }, [])
 
   
   return (
       <div ref={DrawerRef}>
             <EditPanel visible={visible} onCloseFn={() => onClose()} {...props}/>
-        </div>
+      </div>
     );
 })
 
@@ -44,7 +44,7 @@ export const EditPanel = observer((props: {visible: boolean, onCloseFn: () => vo
         closable={true}
         drawerStyle={{paddingTop: 12}}
         mask={false}
-        >
+    >
         <PropsEdition component={currentComponent}/>
       </Drawer>
   )

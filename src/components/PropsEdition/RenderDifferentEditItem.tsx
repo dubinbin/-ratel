@@ -6,7 +6,7 @@ import { ComplexEdition } from './ComplexEdition';
 
 export const RenderDifferentEditItem = (key: string, propsValue: any, schema: {type: string, [key: string]: {}}, onChange: (key: string, v: any) => void) => {
 
-    const renderDiffComp = useCallback(() => {
+    const renderDiffComp = (() => {
         switch(schema.type) {
             case 'radio':
                 return <RadioSchema key={key}
@@ -31,7 +31,7 @@ export const RenderDifferentEditItem = (key: string, propsValue: any, schema: {t
             default:
                 return null
         }
-    }, [propsValue])
+    })
 
     return renderDiffComp()
 }

@@ -2,17 +2,46 @@
     position: relative;
     margin: 0 auto;
     width: 375px;
-    height:812px;
+    height: 812px;
     margin-top: 115px;
     border-radius: 0 0 2px 2px;
     box-shadow: 0 3px 16px 0 rgba(0,0,0,.04);
-    overflow: hidden;
+    // overflow: hidden;
     background: #fff;
     .componentWrap {
         position: relative;
-        overflow: hidden;
+        // overflow: hidden;
         .componentWrapInner {
             position: relative;
+        }
+        .operationTools {
+            position: absolute;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+        
+            .editBtn {
+                width: 30px;
+                height: 30px;
+                position: relative;
+                margin-bottom: 15px;
+                background: #fff;
+                border-radius: 50%;
+                img {
+                    width: 100%;
+                    padding: 4px;
+                }
+            }
+            .deleteBtn {
+                width: 30px;
+                height: 30px;
+                background: #fff;
+                border-radius: 50%;
+                img {
+                    padding: 4px;
+                    width: 100%;
+                }
+            }
         }
         .componentWrapMask {
             position: absolute;

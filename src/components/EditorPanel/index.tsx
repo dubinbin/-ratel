@@ -50,28 +50,33 @@ export const EditorPanel = observer((props: {openRightBoard: () => void}) =>{
 
 export const EditorPanelItem = observer((props: {clickComp: (Comp: any) => void}) => {
 
-    const { componentQueue } = useStore()
+    const { componentQueue, deleteItemFromQueue } = useStore()
+
+
+    const deleteOption = useCallback((e: React.MouseEvent<HTMLDivElement, MouseEvent> ,index: number) => {
+        e.stopPropagation();
+        deleteItemFromQueue(index)
+    }, [])
 
     return (
         <div>
-            {componentQueue.map((Comp: {name: string, component: ComponentClass, props: {[key: string]: any}}, index: number) => {
+            {componentQueue.map((Comp: {name: string, component: ComponentClass, props: {[key: string]: any}, comp_id: string}, index: number) => {
                 const Component = Comp.component;
                 return (
-                    <Draggable draggableId={`draggable-${index}`} index={index} key={index}>
+                    <Draggable draggableId={`draggable-${index}`} key={index} index={index}>
                         {(provided) => (
                             <div className={style.componentWrapInner} 
-                                    onClick={() => props.clickComp(Comp)} 
-                                    key={Comp.name}
+                                    key={Comp.comp_id}
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
                             >
                                 <div className={style.componentWrapMask}></div>
                                 <div className={style.operationTools}>
-                                    <div className={style.editBtn}>
+                                    <div className={style.editBtn} onClick={() => props.clickComp(Comp)} >
                                         <img src={require('./images/edit.png')} alt=""/>
                                     </div>
-                                    <div className={style.deleteBtn}>
+                                    <div className={style.deleteBtn} onClick={(e) => deleteOption(e, index)}>
                                         <img src={require('./images/delete.png')} alt=""/>
                                     </div>
                                 </div>

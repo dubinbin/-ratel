@@ -3,7 +3,7 @@ import { pluginsInit } from 'plugins/initStore';
 import style from './index.module.scss'
 import { observer } from 'mobx-react';
 import { useStore } from 'store/store';
-import { DragDropContext, Droppable, Draggable, DraggableProvided, DroppableProvided } from 'react-beautiful-dnd'
+import { randomNum } from 'services/utils';
 
 export function ComponentWrap(props: {children: React.ReactNode}) {
     const { children } = props;
@@ -23,6 +23,7 @@ export const ShowComponentsPaenel = observer((props: {data: string}) => {
     const addToComponent = useCallback((comp) => {
         addComponent({
             component: comp,
+            comp_id: `comp_${randomNum()}`,
             name: comp.originName,
             schema: comp.schema,
             props: comp.defaultProps,

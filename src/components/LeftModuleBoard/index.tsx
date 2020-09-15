@@ -28,7 +28,7 @@ export const LeftModuleBoard: React.FC<any> = forwardRef((props: {addComponent: 
     return (
         <div ref={DrawerRef}>
             <Drawer
-                title="页面列表"
+                title="模块列表"
                 placement={'left'}
                 className={style.extraDrawer}
                 closable={true}

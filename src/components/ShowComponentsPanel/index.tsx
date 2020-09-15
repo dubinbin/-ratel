@@ -29,7 +29,7 @@ export const ShowComponentsPaenel = observer((props: {data: string}) => {
             props: comp.defaultProps,
             defaultProps: comp.defaultProps,
         })
-    }, [])
+    }, [addComponent])
 
     const renderDifferentComponent = useCallback(() => {
         const getComponents = pluginsInit.components.getObjFromGroup(data)
@@ -49,7 +49,7 @@ export const ShowComponentsPaenel = observer((props: {data: string}) => {
         } else {
             return null
         }
-    }, [data])
+    }, [data, addToComponent])
 
     return renderDifferentComponent()
 })

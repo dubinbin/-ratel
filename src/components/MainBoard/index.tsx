@@ -11,7 +11,6 @@ export type IRefType = {
     openDrawer: () => void | undefined
 } 
 
-
 export const MainBoard = observer(() =>{
 
     const DrawerRefLeft = useRef<IRefType>(null)

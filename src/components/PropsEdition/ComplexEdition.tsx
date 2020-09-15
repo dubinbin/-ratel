@@ -14,7 +14,7 @@ export const ComplexEdition = observer((props: { schema: any, propsValue: any} )
 
     const onChangeValue = useCallback((key: string, v: any, index: number) => {
         CardInfo[index][key] = v
-    }, [])
+    }, [CardInfo])
 
     return (
         <div>

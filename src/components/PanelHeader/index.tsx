@@ -15,7 +15,7 @@ export const PageTitle: React.FC<any> = (props: {clickDrawer: () => void}) => {
         <div className={style.PageTitle}>
             <div className={style.pagename} onClick={() => props.clickDrawer()}>
                 <div><UnorderedListOutlined /></div>
-                <div className={style.pagetext}>页面：优惠券-首页</div>
+                <div className={style.pagetext}>页面：首页</div>
             </div>
         </div>
     )

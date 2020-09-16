@@ -18,7 +18,7 @@ interface IComp {
 }
 
 
-export const EditorPanel = observer((props: {openRightBoard: () => void}) =>{
+export const MiddlePanel = observer((props: {openRightBoard: () => void}) =>{
     // eslint-disable-next-line
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
     const { editComponent, componentQueue, adjustProcedure } = useStore()
@@ -52,7 +52,7 @@ export const EditorPanel = observer((props: {openRightBoard: () => void}) =>{
                                 {...provided.droppableProps}
                                 className={style.componentWrap}
                             >      
-                                    <EditorPanelWrap clickComp={(comp) => clickComp(comp)}/>
+                                    <MiddlePanelWrap clickComp={(comp) => clickComp(comp)}/>
                                 {provided.placeholder}
                             </div>
                         )}
@@ -63,7 +63,7 @@ export const EditorPanel = observer((props: {openRightBoard: () => void}) =>{
     )
 })
 
-export const EditorPanelWrap = observer((props: {clickComp: (Comp: IComp) => void}) => {
+export const MiddlePanelWrap = observer((props: {clickComp: (Comp: IComp) => void}) => {
 
     const { componentQueue } = useStore()
 
@@ -74,7 +74,7 @@ export const EditorPanelWrap = observer((props: {clickComp: (Comp: IComp) => voi
                 return (
                     <Draggable draggableId={`draggable-${index}`} key={index} index={index}>
                         {(provided) => (
-                            <EditorPanelItem 
+                            <MiddlePanelItem 
                                 Comp={Comp} 
                                 provided = {provided} 
                                 Component={Component} 
@@ -89,7 +89,7 @@ export const EditorPanelWrap = observer((props: {clickComp: (Comp: IComp) => voi
     )
 })
 
-export const EditorPanelItem = observer((props: {Comp: IComp, provided: any, clickComp: (Comp: IComp) => void, Component: React.ComponentClass<{}, any>, index: number}) => {
+export const MiddlePanelItem = observer((props: {Comp: IComp, provided: any, clickComp: (Comp: IComp) => void, Component: React.ComponentClass<{}, any>, index: number}) => {
     const { Comp, provided, Component, index } = props;
     const { deleteItemFromQueue } = useStore()
 

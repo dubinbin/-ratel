@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react'
 import { Row } from 'antd'
-import { EditorPanel } from '../EditorPanel'
+import { MiddlePanel } from '../MiddlePanel'
 import { RightModuleBoard } from '../RightModuleBoard'
 import { LeftModuleBoard } from '../LeftModuleBoard'
 import { PanelHeader } from 'components/PanelHeader'
@@ -43,7 +43,7 @@ export const MainBoard = observer(() =>{
 
     
                         <div className={style.EditorPanel}>
-                            <EditorPanel openRightBoard={() => showRightBoard()}/>
+                            <MiddlePanel openRightBoard={() => showRightBoard()}/>
                         </div>
 
 

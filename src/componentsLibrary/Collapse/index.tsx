@@ -7,7 +7,7 @@ export const CollapseComp: React.FC = () => {
 
     return (
         <Collapse defaultActiveKey={['1']}>
-            <Panel header="sdsfdsfsd" key="1">
+            <Panel header="Collapse" key="1">
                 <p>123123</p>
             </Panel>
         </Collapse>
@@ -34,8 +34,7 @@ CollapseComp.defaultProps = {
     }
 };
 
-
-(Collapse as any).sechma = {
+(CollapseComp as any).sechma = {
     activeKey: '',
     defaultActiveKey: null,
     bordered: true,
@@ -53,4 +52,8 @@ CollapseComp.defaultProps = {
         showArrow:  true,
         extra: null
     }
-}
+};
+
+(CollapseComp as any).defaultShowCover = {
+    picture: require('../../assets/images/collapse.png')
+};

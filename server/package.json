@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "supervisor ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^1.2.1",
+    "ioredis": "^4.14.1",
+    "koa": "^2.8.1",
+    "koa-bodyparser": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa2-cors": "^2.0.6",
+    "mysql2": "^2.1.0"
+  }
+}

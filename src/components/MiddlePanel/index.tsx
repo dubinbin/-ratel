@@ -68,7 +68,7 @@ export const MiddlePanelWrap = observer((props: {clickComp: (Comp: IComp) => voi
     const { componentQueue } = useStore()
 
     return (
-        <div>
+        <div className={style.MiddleModuleWrappers}>
             {componentQueue.map((Comp: IComp, index: number) => {
                 const Component = Comp.component;
                 return (

@@ -7,5 +7,76 @@
     margin: 0 auto;
     z-index: 4;
     margin-top: 2px;
-    min-height: 250px;  
+    min-height: 250px;
+}
+
+
+.cardItem {
+    position: relative;
+    width: 44.5vw;
+    max-width: 213.6px;
+    overflow: hidden;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+
+}
+
+.CardWrapper {
+
+}
+
+.CardCover{
+    img {
+        width: 100%;
+    }
+}
+
+.CardContainer {
+    position: relative;
+    margin: 10px;
+}
+
+.CardContainer_title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #282828;
+    line-height: 22px;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    padding-top: 7px;
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+.CardContainer_price {
+    display: flex;
+    align-items: baseline;
+}
+
+.CardContainer_money {
+    color: #f50;
+    font-size: 16px;
+}
+
+.CardContainer_originPrice {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: #a7a7a7;
+    margin-left: 6px;
+}
+
+.buyBtn {
+    height: 30px;
+    line-height: 30px;
+    background-color: #F22E00;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 100px;
+    margin: 10px 0px 10px;
 }

@@ -33,6 +33,11 @@ export class EditorStore {
     }
 
     @action
+    getAllComponent = () => {
+       return this.componentQueue;
+    }
+
+    @action
     editComponent = (component: any) => {
         this.currentComponent = component
      }

@@ -91,4 +91,8 @@ export const CarouselComp = observer((props: {
     //   }
     }
   };
-  
+
+
+(CarouselComp as any).defaultShowCover = {
+    picture: require('@/assets/images/carsouel.png')
+}

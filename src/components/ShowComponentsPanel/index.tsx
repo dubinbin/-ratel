@@ -8,7 +8,7 @@ import { randomNum } from 'services/utils';
 export function ComponentWrap(props: {children: React.ReactNode}) {
     const { children } = props;
     return (
-        <div className={style.CollapseComp}>
+        <div className={style.CollapseComp} style={{minHeight: 120}}>
             <div className={style.CollapseCompMask}></div>
             {children}
         </div>
@@ -39,7 +39,7 @@ export const ShowComponentsPaenel = observer((props: {data: string}) => {
                     {getComponents.map((Component, index) => (
                         <li key={index} onClick={() => addToComponent(Component)}>
                             <ComponentWrap>
-                                <Component/>
+                                <img className={style.componentShowCover} src={(Component.defaultShowCover) && Component.defaultShowCover.picture} alt=""/>
                             </ComponentWrap>
                         </li>
 

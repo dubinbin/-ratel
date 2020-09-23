@@ -45,7 +45,7 @@ export const EditPanel = observer((props: {visible: boolean, onCloseFn: () => vo
         drawerStyle={{paddingTop: 12}}
         mask={false}
     >
-        <PropsEdition component={currentComponent}/>
+        {currentComponent && <PropsEdition component={currentComponent}/>}
       </Drawer>
   )
 })

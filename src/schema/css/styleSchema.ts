@@ -12,5 +12,4 @@ export const CssSchema = [
     'PADDING',
     'COLOR',
     'BACKGROUND',
-    ''
 ]

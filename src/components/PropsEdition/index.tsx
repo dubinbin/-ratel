@@ -6,14 +6,14 @@ import { CardHandle } from './HandleDifferantComponent/Card';
 
 
 export const PropsEdition = observer(({component}: any) =>{
-    const { schema , props,  name  } = component;
+    const { schema , props,  name, comp_id } = component;
 
     const handle = useCallback((key: string, newValue: any) => {
         const newProps = props
         newProps[key] = newValue;
     }, [props])
 
-
+    
     const ComponentHandleSwitch = useCallback((name: string) =>  {
         switch(name) {
             case 'Card':
@@ -28,7 +28,7 @@ export const PropsEdition = observer(({component}: any) =>{
                 {ret}
             </ul>;
         }
-    }, [name])
+    }, [name, comp_id])
 
     return ComponentHandleSwitch(name)
     

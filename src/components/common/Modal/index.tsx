@@ -22,13 +22,13 @@ export function ModalShow(params: IModalParms) {
     const handleOk = useCallback(() => {
         setVisible(false)
         onOkFn && onOkFn();
-    }, [])
+    }, [onOkFn])
 
 
     const handleCancel = useCallback(() => {
         setVisible(false)
         onCancelFn && onCancelFn()
-    }, [])
+    }, [onCancelFn])
 
 
     return (

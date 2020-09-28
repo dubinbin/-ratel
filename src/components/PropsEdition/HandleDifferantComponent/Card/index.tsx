@@ -1,27 +1,39 @@
-import React, { useCallback, useMemo, useState } from 'react'
-import { Tabs, Button, Switch,  List, Avatar } from 'antd';
-import { Input, Select } from 'antd';
+import React, { useCallback, useMemo, useState, useEffect } from 'react'
+import { Tabs, Button, Switch,  List, Avatar, TreeSelect } from 'antd';
 import { Title } from '../Title';
 import { showModal } from '@/components/common/Modal';
-import { CardComp } from '@/componentsLibrary/Card'
+// import { CardComp } from '@/componentsLibrary/Card'
 import { observer } from 'mobx-react';
 import { useStore } from '@/store/store';
 import { changeMoney } from '@/services/utils';
 import style from './index.module.scss'
 import { CardServicesModule } from '@/services/modules/card';
 
-const { Option } = Select;
 const { TabPane } = Tabs;
 
 
 const CardTabs = observer(() => {
-    const [check, setCheck] = useState(true)
+    const [check, setCheck] = useState<boolean>(true)
+    const [selectValue, setSelectValue] = useState(undefined)
+    const [moduleData, setModuleData] = useState()
 
     const { currentComponent } = useStore();
 
     const { props } = currentComponent;
 
     const { CardInfo } = props;
+
+
+    useEffect(() => {
+        getModule();
+    }, [])
+
+    const getModule = async() => {
+        try {
+            const { data } = await CardServicesModule.getModule();
+            setModuleData(data)
+           } catch(e)  {}
+    }
 
     function callback<T>(key: T): void {
         console.log(key)
@@ -39,6 +51,11 @@ const CardTabs = observer(() => {
     const deleteItem = useCallback((index) => {
         CardInfo.splice(index, 1)
     }, [CardInfo])
+
+    const onChange = useCallback((value) => {
+        console.log(value);
+        setSelectValue(value);
+    }, [])
 
 
     const edit = useCallback((index) => {
@@ -65,20 +82,21 @@ const CardTabs = observer(() => {
 
                     <Switch checkedChildren="接口" unCheckedChildren="自定义" defaultChecked={check}  onChange={() => setCheck(!check)} />
 
-                    <br/>
+                    <div style={{marginTop: 10}}></div>
 
                     {check ? 
                         <div>
-                        <Title title="数据接口："/>
-                            <Input.Group compact>
-                                <Select defaultValue="GET">
-                                    <Option value="GET">GET</Option>
-                                    <Option value="POST">POST</Option>
-                                </Select>
-                                <Input style={{ width: '70%' }} defaultValue="" />
-                            </Input.Group>
-                            <br/>
-                            <Button type="primary" onClick={() => addData()}>注入</Button>
+                            <Title title="数据接口："/>
+                            <TreeSelect
+                                style={{ width: '100%' }}
+                                value={selectValue}
+                                dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+                                treeData={moduleData}
+                                placeholder="Please select"
+                                treeDefaultExpandAll
+                                onChange={onChange}
+                            />
+                            <div style={{marginTop: 10}}></div>
                         </div>
                     : <div style={{marginTop: 10}}>
                         <div className={style.addBtnWrap}>
@@ -116,7 +134,7 @@ const CardTabs = observer(() => {
                 </TabPane>
             </Tabs>    
             )
-        }, [CardInfo, addCard, deleteItem, CardInfo.length, check]) 
+        }, [CardInfo, addCard, deleteItem, CardInfo.length, check, selectValue, moduleData]) 
     )
 })
 

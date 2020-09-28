@@ -8,8 +8,28 @@ export type IGetCardType = {
     link: string
 }[]
 
+export type IGetModuleType = Datum[]
+
+export interface Child {
+    title: string;
+    value: string;
+}
+
+export interface Datum {
+    title: string;
+    value: string;
+    selectable: boolean;
+    children: Child[];
+}
+
+
+
 export const CardServicesModule = {
     getCard(): Promise<IResponse<IGetCardType>> {
-       return Request.$get<IResponse<IGetCardType>>('/index/getData')
+       return Request.$get<IResponse<IGetCardType>>('/index/getdata')
+    },
+
+    getModule() :Promise<IResponse<IGetModuleType>> {
+        return Request.$get<IResponse<IGetModuleType>>('/index/getmodule')
     }
 }

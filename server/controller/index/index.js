@@ -1,7 +1,36 @@
 const Router = require('koa-router');
 
 class IndexController {
-    static async getCard(ctx, next) {
+    static async getModule(ctx) {
+        const modules = [
+            {
+              title: '活动页接口',
+              value: '0-0',
+              selectable: false,
+              children: [
+                {
+                  title: '拉取列表接口',
+                  value: '0-0-1',
+                },
+                {
+                  title: 'Child Node2',
+                  value: '0-0-2',
+                },
+              ],
+            }
+          ];
+
+            try {
+                ctx.response.body = {
+                    msg: 'ok',
+                    code: 0,
+                    data: modules
+                }
+            } catch (e) {
+                ctx.response.body = e
+            }
+    }
+    static async getCard(ctx) {
         const data = [{
             title: '依巴特 儿童驼奶粉 225克（15克*15袋）/罐 ',
             price: 17500,

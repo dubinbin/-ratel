@@ -93,9 +93,9 @@ export const MiddlePanelItem = observer((props: {Comp: IComp, provided: any, cli
     const { Comp, provided, Component, index } = props;
     const { deleteItemFromQueue } = useStore()
 
-    const deleteOption = useCallback((e: React.MouseEvent<HTMLDivElement, MouseEvent> ,index: number) => {
+    const deleteOption = useCallback((e: React.MouseEvent<HTMLDivElement, MouseEvent> ,index: number, componentId: string) => {
         e.stopPropagation();
-        deleteItemFromQueue(index)
+        deleteItemFromQueue(index, componentId)
     }, [deleteItemFromQueue])
 
     return (
@@ -111,7 +111,7 @@ export const MiddlePanelItem = observer((props: {Comp: IComp, provided: any, cli
                     <div className={style.editBtn} onClick={() => props.clickComp(Comp)} >
                         <img src={require('./images/edit.png')} alt=""/>
                     </div>
-                    <div className={style.deleteBtn} onClick={(e) => deleteOption(e, index)}>
+                    <div className={style.deleteBtn} onClick={(e) => deleteOption(e, index, Comp.comp_id)}>
                         <img src={require('./images/delete.png')} alt=""/>
                     </div>
                 </div>

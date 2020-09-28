@@ -3,8 +3,7 @@ import { PageHeader, Button } from 'antd'
 import style from './index.module.scss'
 import { UnorderedListOutlined, SaveOutlined, EyeOutlined, SendOutlined } from '@ant-design/icons'
 import { observer } from 'mobx-react'
-import { useStore } from '../../store/store'
-
+// import { useStore } from '../../store/store'
 
 export const Logo:FC = () => {
     return (
@@ -26,13 +25,13 @@ export const PageTitle: React.FC<any> = (props: {clickDrawer: () => void}) => {
 
 export const PanelHeader = observer((props: { showDrawer: () => void}) => {
     const { showDrawer } = props
-    const { getAllComponent } = useStore();
+    // const { getAllComponent } = useStore();
 
 
     const getAllQueue = useCallback(() => {
-        const allComp = getAllComponent();
+        // const allComp = getAllComponent();
         // console.log(allComp)
-    }, [getAllComponent])
+    }, [])
 
     return (
         <PageHeader

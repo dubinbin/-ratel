@@ -3,6 +3,9 @@ import { observer } from 'mobx-react'
 import { changeMoney } from '@/services/utils';
 import style from './index.module.scss'
 
+enum CssSchemaKey {
+    'title' = 'title'
+}
 
 export const CardComp = observer((props: {
     CardInfo: {
@@ -26,7 +29,7 @@ export const CardComp = observer((props: {
                         </div>
 
                         <div className={style.CardContainer}>
-                            <p className={style.CardContainer_title}>{item.title}</p>
+                            <p className={style.CardContainer_title} data-csskey={CssSchemaKey['title']}>{item.title}</p>
                             <div className={style.CardContainer_price}>
 
                                 <div className={style.CardContainer_money}>
@@ -64,21 +67,23 @@ export const CardComp = observer((props: {
         originPrice: 22000,
         cover: 'https://www.160dyf.com/Public/upload/goods/2018/01-15/200x200/5a5c56ef0382a.jpg',
         link: 'https://m1.business.tryweike.cn/operation-business/fourth-activity/coupon-activity?entries=icon'
-    },
-    {
-        title: '跨境 Devondale 澳大利亚 德运 脱脂高钙成人牛奶粉  1kg 1xc',
-        price: 13500,
-        originPrice: 21000,
-        cover: 'https://www.160dyf.com/Public/upload/goods/2019/03-12/200x200/5c87a7eae802b.jpg',
-        link: 'https://m1.business.tryweike.cn/operation-business/fourth-activity/coupon-activity?entries=icon'
-    },
-    {
-        title: '露安适 婴儿手口专用湿巾 20片/包 宝宝儿童便携随身装 ',
-        price: 12500,
-        originPrice: 20000,
-        cover: 'https://www.160dyf.com/Public/upload/goods/2019/08-01/200x200/5d42bafa4e899.jpg',
-        link: 'https://m1.business.tryweike.cn/operation-business/fourth-activity/coupon-activity?entries=icon'
-    }]
+    }
+    // ,
+    // {
+    //     title: '跨境 Devondale 澳大利亚 德运 脱脂高钙成人牛奶粉  1kg 1xc',
+    //     price: 13500,
+    //     originPrice: 21000,
+    //     cover: 'https://www.160dyf.com/Public/upload/goods/2019/03-12/200x200/5c87a7eae802b.jpg',
+    //     link: 'https://m1.business.tryweike.cn/operation-business/fourth-activity/coupon-activity?entries=icon'
+    // },
+    // {
+    //     title: '露安适 婴儿手口专用湿巾 20片/包 宝宝儿童便携随身装 ',
+    //     price: 12500,
+    //     originPrice: 20000,
+    //     cover: 'https://www.160dyf.com/Public/upload/goods/2019/08-01/200x200/5d42bafa4e899.jpg',
+    //     link: 'https://m1.business.tryweike.cn/operation-business/fourth-activity/coupon-activity?entries=icon'
+    // }
+]
 };
 
 
@@ -116,31 +121,31 @@ export const CardComp = observer((props: {
             schema: [
                 { 
                     fontSize: {
-                        default: 16,
+                        value: 16,
                         schemaComponent: ''
                     },
                     fontWeight: {
-                        default: 500,
+                        value: 500,
                         schemaComponent: ''
                     },
                     lineHeight: {
-                        default: '22px',
+                        value: '22px',
                         schemaComponent: ''
                     },
                     color: {
-                        default: '#282828',
+                        value: '#282828',
                         schemaComponent: ''
                     },
                     margin: {
-                        default: [0, 0, 10, 0],
+                        value: [0, 0, 10, 0],
                         schemaComponent: ''
                     },
                     padding: {
-                        default: [7, 0, 0, 0],
+                        value: [7, 0, 0, 0],
                         schemaComponent: ''
                     },
                     height: {
-                        default: 50,
+                        value: 50,
                         schemaComponent: ''
                     }
 

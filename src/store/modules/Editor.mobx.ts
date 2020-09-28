@@ -10,8 +10,9 @@ export class EditorStore {
     }
 
     @action 
-    deleteItemFromQueue = (index: number) => {
-      this.componentQueue.splice(index, 1)
+    deleteItemFromQueue = (index: number, componentId: string) => {
+      this.componentQueue.splice(index, 1);
+      if (this.currentComponent.comp_id === componentId) this.currentComponent = undefined;
     }
 
     @action

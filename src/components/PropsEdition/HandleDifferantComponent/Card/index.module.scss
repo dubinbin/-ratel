@@ -1,0 +1,23 @@
+.deleteBtn {
+    width: 18px;
+    position: absolute;
+    bottom: 13px;
+    right: 35px;
+    img {
+        width: 100%;
+    }
+}
+
+.editBtn {
+    width: 18px;
+    position: absolute;
+    bottom: 13px;
+    right: 0px;
+    img {
+        width: 100%;
+    }  
+}
+
+.addBtnWrap {
+    position: relative;
+}
